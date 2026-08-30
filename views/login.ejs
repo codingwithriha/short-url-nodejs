@@ -1,25 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
-    </style>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Login · Short URL</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h1>Login</h1>
-    <form action="/user/login" method="post">
-      <label>Email</label>
-      <input type="text" required name="email" />
-      <label>Password</label>
-      <input type="text" required name="password" />
+    <nav class="navbar">
+      <div class="brand"><span class="logo">🔗</span> Short URL</div>
+      <div class="nav-links">
+        <a href="/signup" class="pill">Sign up</a>
+      </div>
+    </nav>
 
-      <button type="submit">Login</button>
-    </form>
+    <div class="auth-wrapper">
+      <div class="auth-card">
+        <h1>Welcome back</h1>
+        <p class="subtitle">Log in to manage your short links.</p>
+
+        <% if (locals.error) { %>
+        <div class="alert">⚠️ <%= error %></div>
+        <% } %>
+
+        <form action="/user/login" method="post">
+          <div class="field">
+            <label>Email</label>
+            <input type="text" required name="email" placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label>Password</label>
+            <input type="password" required name="password" placeholder="••••••••" />
+          </div>
+          <button type="submit" class="btn">Log In</button>
+        </form>
+
+        <div class="auth-footer">
+          Don't have an account? <a href="/signup">Sign up</a>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
